@@ -1,5 +1,5 @@
 // Premium Listings & Paid Tours Dashboard Coordinator
-const API_BASE = window.location.protocol === 'file:' ? 'http://localhost:5000' : '';
+const API_BASE = window.location.protocol === 'file:' ? 'http://localhost:5000' : 'https://backend-jade-seven-98.vercel.app';
 
 // Client-side cache to enable instant search filters
 let cachedListings = [];
