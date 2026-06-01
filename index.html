@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>ADVENTURE</title>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
+        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="css/responsive.css" />
+        <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="img/apple-touch-icon.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="img/favicon-32x32.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="img/favicon-16x16.png"
+        />
+        <link rel="manifest" href="/site.webmanifest" />
+    </head>
+    <body
+        class="home-page"
+        onload='if (window.location.href.substr(window.location.href.length - 6) == "#about") { introAboutLogoTransition(); }'
+    >
+        <!--navbar-->
+        <nav class="navbar glass" style="height: 70px">
+            <span
+                ><a href="#home" style="display: flex; align-items: center"
+                    ><img
+                        class="img2"
+                        src="./img/mountain.png"
+                        width="40"
+                        style="margin: -25px -10px -25px -20px"
+                    />
+                    <h1 class="logo">&nbsp;ADVENTURE</h1></a
+                ></span
+            >
+            <ul class="nav-links">
+                <li>
+                    <a href="#home" id="pri" class="active cir_border">Home</a>
+                </li>
+                <li>
+                    <a href="tours.html" id="quad" class="cir_border">Tours & Events</a>
+                </li>
+
+                <li><a href="#about" id="quint" class="cir_border">About</a></li>
+                <!-- Contributions link removed -->
+                <li>
+                    <a href="contact.html" id="hept" class="cir_border">Contact</a>
+                </li>
+                <li>
+                    <a href="add.html" class="cir_border">Add Listing</a>
+                </li>
+                <li>
+                    <a href="listings.html" class="cir_border">Listings</a>
+                </li>
+                <li>
+                    <a href="ai.html" class="cir_border">AI Assistant</a>
+                </li>
+                <li>
+                    <div>
+                        <input
+                            type="checkbox"
+                            class="checkbox dark"
+                            id="checkbox"
+                        />
+                        <label for="checkbox" class="label">
+                            <i class="fa fa-moon-o"></i>
+                            <i class="fa fa-sun-o"></i>
+                            <div class="ball"></div>
+                        </label>
+                    </div>
+                </li>
+            </ul>
+            <img src="./img/menu-btn.png" alt="" class="menu-btn" />
+        </nav>
+        <!--navbar-->
+
+        <header id="home">
+            <div class="header-content">
+                <h2 id="quote">Explore the colourful World</h2>
+                <div class="line"></div>
+                <h1>A WONDERFUL GIFT</h1>
+                <a
+                    href="#about"
+                    class="ctn"
+                    onclick='removeall(); $("#quad").css("border", "2px solid whitesmoke"); $("#quad").css("border-radius", "20px");'
+                    >Learn more</a
+                >
+            </div>
+
+            <!-- Floating Quick-Search Booking Widget -->
+            <div class="hero-search-wrapper">
+                <form class="hero-search-card" onsubmit="handleHeroSearch(event)">
+                    <div class="search-field-group">
+                        <label><i class="fa fa-compass"></i> Adventure Category</label>
+                        <div class="search-input-wrapper">
+                            <select id="heroCategory" required>
+                                <option value="All">All Categories</option>
+                                <option value="India">India Specials 🇮🇳</option>
+                                <option value="Adventure">Adventure Summit 🏔️</option>
+                                <option value="Tours">Walking Hikes 🥾</option>
+                                <option value="Beach">Beach & Ocean 🏖️</option>
+                                <option value="Cultural">Cultural Wonders ⛩️</option>
+                            </select>
+                            <i class="fa fa-chevron-down select-arrow"></i>
+                        </div>
+                    </div>
+                    <div class="search-field-group">
+                        <label><i class="fa fa-users"></i> Travelers Size</label>
+                        <div class="search-input-wrapper">
+                            <select id="heroPassengers">
+                                <option value="1">1 Passenger</option>
+                                <option value="2">2 Passengers</option>
+                                <option value="3">3 Passengers</option>
+                                <option value="4">4+ Passengers</option>
+                            </select>
+                            <i class="fa fa-chevron-down select-arrow"></i>
+                        </div>
+                    </div>
+                    <div class="search-field-group">
+                        <label><i class="fa fa-calendar"></i> Target Season</label>
+                        <div class="search-input-wrapper">
+                            <select id="heroSeason">
+                                <option value="autumn">Autumn 2026</option>
+                                <option value="winter">Winter 2026</option>
+                                <option value="spring">Spring 2027</option>
+                                <option value="summer">Summer 2027</option>
+                            </select>
+                            <i class="fa fa-chevron-down select-arrow"></i>
+                        </div>
+                    </div>
+                    <button type="submit" class="hero-search-btn">
+                        <i class="fa fa-search"></i> Search Adventures
+                    </button>
+                </form>
+            </div>
+        </header>
+
+        <!--Events redirect promo-->
+        <section class="events" style="margin: 80px auto; width: 85%;">
+            <div style="background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('./img/bg.png'); min-height: 40vh; border-radius: 16px; display: flex; align-items: center; justify-content: center; box-shadow: 0 20px 40px rgba(0,0,0,0.4); background-size: cover; background-position: center;">
+                <div class="explore-content" style="margin: 0; text-align: center; max-width: 650px; padding: 2rem;">
+                    <h1 style="font-size: 2.8rem; letter-spacing: 0.15rem;">FAMOUS EVENTS</h1>
+                    <div class="line" style="margin: 15px auto 25px auto;"></div>
+                    <p style="text-align: center; max-width: 100%; margin-bottom: 30px; font-size: 1.1rem; line-height: 1.6; background: transparent; color: #eee; padding: 0;">
+                        Discover our newly expanded list of breathtaking trips, scenic walking tours, cultural excursions, and beach scuba packages. Find your next venture.
+                    </p>
+                    <a href="tours.html" class="ctn" style="padding: 15px 40px; font-size: 1.1rem; display: inline-block;">Explore Events Catalog</a>
+                </div>
+            </div>
+        </section>
+
+        <!--Explore-->
+        <section class="explore" id="explore">
+            <div class="explore-content">
+                <span class="explore-subtitle">Premium Experiences</span>
+                <h1>EXPLORE THE WORLD</h1>
+                <div class="line"></div>
+                <blockquote class="explore-quote">
+                    “Travel makes one modest. You see what a tiny place you occupy in the world.”
+                    <cite>– Gustav Flaubert</cite>
+                </blockquote>
+                
+                <!-- Interactive Pillars of Adventure -->
+                <div class="explore-grid">
+                    <div class="explore-card card-frontiers">
+                        <div class="explore-card-glow"></div>
+                        <div class="explore-card-icon"><i class="fa fa-compass"></i></div>
+                        <h3>Untamed Frontiers</h3>
+                        <p>Summit snowy mountain ranges, traverse freezing glaciers, and conquer high cold passes.</p>
+                        <div class="explore-card-overlay"></div>
+                    </div>
+                    <div class="explore-card card-escapes">
+                        <div class="explore-card-glow"></div>
+                        <div class="explore-card-icon"><i class="fa fa-anchor"></i></div>
+                        <h3>Azure Escapes</h3>
+                        <p>Sail across turquoise waters, dive inside marine reefs, and relax in luxury overwater bungalows.</p>
+                        <div class="explore-card-overlay"></div>
+                    </div>
+                    <div class="explore-card card-history">
+                        <div class="explore-card-glow"></div>
+                        <div class="explore-card-icon"><i class="fa fa-fort-awesome"></i></div>
+                        <h3>Living History</h3>
+                        <p>Explore ancient wooden temples, stand before grand pyramids, and immerse in authentic heritage.</p>
+                        <div class="explore-card-overlay"></div>
+                    </div>
+                </div>
+                
+                <a href="tours.html" class="ctn explore-btn">Explore Events Catalog</a>
+            </div>
+        </section>
+        <!--Explore-->
+
+        <!--tours-->
+        <section class="tours-preview" id="tours">
+            <div class="tours-preview-header">
+                <div class="header-left">
+                    <span class="subtitle">Upcoming Adventures</span>
+                    <h2 class="font-color">UPCOMING TOURS & DESTINATIONS</h2>
+                    <div class="line line-left"></div>
+                </div>
+                <a href="tours.html" class="ctn secondary-ctn">View All Tours <i class="fa fa-arrow-right"></i></a>
+            </div>
+
+            <div class="tours-preview-grid">
+                <!-- Preview Card 1 (Ladakh) -->
+                <article class="preview-card">
+                    <div class="preview-img-container">
+                        <span class="preview-badge badge-india">India Special 🇮🇳</span>
+                        <span class="preview-price">₹84,915</span>
+                        <img src="img/ladakh.jpg" alt="Ladakh Mountain Passes" />
+                        <div class="preview-date-badge">
+                            <span class="day">28</span>
+                            <span class="month">SEP</span>
+                        </div>
+                    </div>
+                    <div class="preview-card-body">
+                        <h3>Ladakh High Mountain Passes</h3>
+                        <p>Conquer Leh cold deserts, high motorable passes, and Pangong Tso lake.</p>
+                        <div class="preview-meta">
+                            <span><i class="fa fa-clock-o"></i> 9 Days</span>
+                            <span><i class="fa fa-line-chart"></i> Hard</span>
+                        </div>
+                        <a href="tours.html?id=6" class="preview-btn">
+                            <span>Quick Book</span>
+                            <i class="fa fa-chevron-right"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Preview Card 2 (Kyoto) -->
+                <article class="preview-card">
+                    <div class="preview-img-container">
+                        <span class="preview-badge">Cultural</span>
+                        <span class="preview-price">₹1,01,915</span>
+                        <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=800&q=80" alt="Kyoto Cultural Excursion" />
+                        <div class="preview-date-badge">
+                            <span class="day">01</span>
+                            <span class="month">OCT</span>
+                        </div>
+                    </div>
+                    <div class="preview-card-body">
+                        <h3>Kyoto Cultural Excursion</h3>
+                        <p>Immerse yourself in Japan's ancient wooden temples, shrines, and gardens.</p>
+                        <div class="preview-meta">
+                            <span><i class="fa fa-clock-o"></i> 5 Days</span>
+                            <span><i class="fa fa-line-chart"></i> Easy</span>
+                        </div>
+                        <a href="tours.html?id=23" class="preview-btn">
+                            <span>Quick Book</span>
+                            <i class="fa fa-chevron-right"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Preview Card 3 (Amalfi Coast) -->
+                <article class="preview-card">
+                    <div class="preview-img-container">
+                        <span class="preview-badge">Walking Hike</span>
+                        <span class="preview-price">₹1,10,415</span>
+                        <img src="img/img6.png" alt="Amalfi Coast Walking Path" />
+                        <div class="preview-date-badge">
+                            <span class="day">04</span>
+                            <span class="month">OCT</span>
+                        </div>
+                    </div>
+                    <div class="preview-card-body">
+                        <h3>Amalfi Coast Walking Path</h3>
+                        <p>Walk the famous cliffside Path of the Gods overlooking the Mediterranean.</p>
+                        <div class="preview-meta">
+                            <span><i class="fa fa-clock-o"></i> 7 Days</span>
+                            <span><i class="fa fa-line-chart"></i> Easy</span>
+                        </div>
+                        <a href="tours.html?id=16" class="preview-btn">
+                            <span>Quick Book</span>
+                            <i class="fa fa-chevron-right"></i>
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </section>
+        <!--tours-->
+
+
+        <!-- About Us Narrative Section -->
+        <section id="about">
+            <div class="title">
+                <h1 class="font-color">About Us</h1>
+                <div class="line"></div>
+            </div>
+            
+            <div class="portal-container">
+                <div class="about-narrative-grid">
+                    
+                    <!-- Left: Brand Narrative Column -->
+                    <div class="about-narrative-left">
+                        <span class="about-subtitle">Our Legacy & Mission</span>
+                        <h2>Crafting Extraordinary Expeditions Across The Globe</h2>
+                        <p>
+                            Founded in 2022 by travel aficionados, ADVENTURE was born out of a simple, powerful desire: to help curious souls step off the beaten track and unlock the world's most breathtaking natural wonders safely.
+                        </p>
+                        
+                        <div class="about-mission-statement">
+                            <p>“Our mission is to cultivate deep, authentic connections to nature, local heritage, and communities through meticulously curated global expeditions.”</p>
+                        </div>
+                        
+                        <p>
+                            Whether you're looking to scale the untamed cold passes of the Indian Himalayas, drift through lush green coconut groves in Kerala backwaters, or relax in a luxury overwater villa in the Maldives, our certified guides and smart AI travel assistants ensure that every step of your journey is seamless, memorable, and safe.
+                        </p>
+                        
+                        <!-- Dynamic Trust Stats Grid -->
+                        <div class="about-stats-grid">
+                            <div class="about-stat-mini-card">
+                                <div class="about-stat-number">12k+</div>
+                                <div class="about-stat-label">Happy Souls</div>
+                            </div>
+                            <div class="about-stat-mini-card">
+                                <div class="about-stat-number">50+</div>
+                                <div class="about-stat-label">Curated Trips</div>
+                            </div>
+                            <div class="about-stat-mini-card">
+                                <div class="about-stat-number">100%</div>
+                                <div class="about-stat-label">Safety Rating</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Autoplay Premium Slideshow Carousel -->
+                    <div class="about-slideshow-col">
+                        <div class="about-slideshow-container">
+                            <!-- Navigation dots indicators -->
+                            <div class="about-slideshow-dots">
+                                <button class="slideshow-dot active" onclick="showAboutSlide(0)"></button>
+                                <button class="slideshow-dot" onclick="showAboutSlide(1)"></button>
+                                <button class="slideshow-dot" onclick="showAboutSlide(2)"></button>
+                            </div>
+
+                            <!-- Slides list -->
+                            <div class="about-slide active" style="background-image: url('img/vrindavan.png');">
+                                <div class="about-slide-caption">
+                                    <h4>Divine Spiritual India</h4>
+                                    <p>Experience local devotion in sacred Kashi and Vrindavan temple routes.</p>
+                                </div>
+                            </div>
+                            <div class="about-slide" style="background-image: url('img/annapurna.jpg');">
+                                <div class="about-slide-caption">
+                                    <h4>Untamed Himalayan Summits</h4>
+                                    <p>Acclimatize beside roaring suspension bridges and high passes in Annapurna.</p>
+                                </div>
+                            </div>
+                            <div class="about-slide" style="background-image: url('https://images.unsplash.com/photo-1506929562872-bb421503ef21?auto=format&fit=crop&w=800&q=80');">
+                                <div class="about-slide-caption">
+                                    <h4>Azure Maldives Escapes</h4>
+                                    <p>Relax in tropical overwater bungalows floating over turquoise lagoons.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!-- About -->
+
+        <!-- Contributions section removed per request -->
+
+        <!-- contact redirect promo -->
+        <section class="explore" style="background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('./img/bg2.png'); min-height: 40vh; margin: 80px auto; border-radius: 16px; display: flex; align-items: center; justify-content: center; box-shadow: 0 20px 40px rgba(0,0,0,0.4);">
+            <div class="explore-content" style="margin: 0; text-align: center; max-width: 650px; padding: 2rem;">
+                <h1 style="font-size: 2.8rem; letter-spacing: 0.15rem;">GET IN TOUCH</h1>
+                <div class="line" style="margin: 15px auto 25px auto;"></div>
+                <p style="text-align: center; max-width: 100%; margin-bottom: 30px; font-size: 1.1rem; line-height: 1.6; background: transparent; color: #eee; padding: 0;">
+                    Have questions, comments, or planning a trip? Speak to our local experts who will craft the perfect adventure tailored to your desires.
+                </p>
+                <a href="contact.html" class="ctn" style="padding: 15px 40px; font-size: 1.1rem; display: inline-block;">Message Us Now</a>
+            </div>
+        </section>
+        <!-- up scroll -->
+        <i class="arrow"  onclick="topFunction()" id="upbtn"></i>
+        <!-- end -->
+        <!--footer-->
+        <section class="footer">
+            <span>Created By Ankush | &#169; 2026 All rights reserved.</span>
+            <div class="social">
+                <li>
+                    <!-- External social/profile links removed to keep the site self-contained -->
+                </li>
+            </div>
+        </section>
+        <!--footer-->
+
+        <script>
+            const menuBtn = document.querySelector(".menu-btn");
+            const navlinks = document.querySelector(".nav-links");
+
+            menuBtn.addEventListener("click", () => {
+                navlinks.classList.toggle("mobile-menu");
+            });
+
+            // Interactive 3D Glow spotlight on Explore Cards
+            const exploreCards = document.querySelectorAll(".explore-card");
+            exploreCards.forEach(card => {
+                card.addEventListener("mousemove", (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    card.style.setProperty("--x", `${x}px`);
+                    card.style.setProperty("--y", `${y}px`);
+                });
+            });
+
+            // Premium About Us Slideshow Autoplay & Pagination Logic
+            let currentAboutSlide = 0;
+            const aboutSlides = document.querySelectorAll('.about-slide');
+            const aboutDots = document.querySelectorAll('.slideshow-dot');
+
+            function showAboutSlide(index) {
+                if (!aboutSlides.length) return;
+                
+                // Stop any overlap intervals
+                clearInterval(aboutInterval);
+                aboutInterval = setInterval(nextAboutSlide, 4500);
+
+                aboutSlides.forEach(slide => {
+                    slide.classList.remove('active');
+                });
+                aboutDots.forEach(dot => {
+                    dot.classList.remove('active');
+                });
+
+                currentAboutSlide = (index + aboutSlides.length) % aboutSlides.length;
+                aboutSlides[currentAboutSlide].classList.add('active');
+                aboutDots[currentAboutSlide].classList.add('active');
+            }
+
+            function nextAboutSlide() {
+                showAboutSlide(currentAboutSlide + 1);
+            }
+
+            // Autoplay slideshow every 4.5 seconds
+            let aboutInterval = setInterval(nextAboutSlide, 4500);
+
+            // Floating Quick-Search Booking Widget Handler
+            function handleHeroSearch(event) {
+                event.preventDefault();
+                const category = document.getElementById('heroCategory').value;
+                const passengers = document.getElementById('heroPassengers').value;
+                window.location.href = `tours.html?category=${encodeURIComponent(category)}&passengers=${encodeURIComponent(passengers)}`;
+            }
+        </script>
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script src="js/script.js"></script>
+
+    </body>
+</html>

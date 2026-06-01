@@ -1,0 +1,335 @@
+const EVENTS = [
+  // ==================== India Specials (7 cards) ====================
+  {
+    id: 1,
+    title: 'Vrindavan Spiritual Devotion',
+    image: 'img/vrindavan.png',
+    category: 'India',
+    price: 299,
+    duration: '3 Days',
+    difficulty: 'Easy',
+    rating: 5,
+    short: 'Immerse in the divine love and chanting in the sacred land of Lord Krishna.',
+    details: 'Embark on a soulful tour of holy Vrindavan. Participate in morning and evening prayers at Banke Bihari, Prem Mandir, and ISKCON temples. Includes scenic Yamuna River Aarti boat tours and satvik culinary dining.'
+  },
+  {
+    id: 2,
+    title: 'Varanasi Kashi Eternal Aarti',
+    image: 'img/kashi.png',
+    category: 'India',
+    price: 349,
+    duration: '4 Days',
+    difficulty: 'Easy',
+    rating: 5,
+    short: 'Witness the mystical Ganga Aarti and explore the world\'s oldest living city.',
+    details: 'Experience spiritual awakening along the sacred banks of Ganga. Take private sunrise boat cruises to view the historic ghats, explore the sacred Kashi Vishwanath temple, and get VIP seating for the legendary evening Ganga Aarti.'
+  },
+  {
+    id: 3,
+    title: 'Somnath & Dwarka Sacred Yatra',
+    image: 'img/somnath.png',
+    category: 'India',
+    price: 449,
+    duration: '5 Days',
+    difficulty: 'Easy',
+    rating: 5,
+    short: 'Embark on a soul-stirring journey to the legendary shores of Dwarka & Somnath.',
+    details: 'Pay homage at two of India\'s most revered coastal temples. Visit the majestic Somnath Jyotirlinga temple standing high by the Arabian Sea and Dwarkadhish temple in Dwarka. Includes expert-guided heritage and mythology walks.'
+  },
+  {
+    id: 4,
+    title: 'Taj Mahal Heritage Majesty',
+    image: 'https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=800&q=80',
+    category: 'India',
+    price: 499,
+    duration: '3 Days',
+    difficulty: 'Easy',
+    rating: 5,
+    short: 'Witness the timeless, white-marble beauty of the world\'s most romantic monument.',
+    details: 'Skip-the-line VIP private tours of the Taj Mahal during sunrise, Agra Fort, and Mehtab Bagh sunset viewing. Includes 5-star Mughal architecture resort stays and fine dining heritage culinary tours.'
+  },
+  {
+    id: 5,
+    title: 'Kerala Backwaters Houseboat',
+    image: 'https://images.unsplash.com/photo-1593693397690-362cb9666fc2?auto=format&fit=crop&w=800&q=80',
+    category: 'India',
+    price: 699,
+    duration: '5 Days',
+    difficulty: 'Easy',
+    rating: 5,
+    short: 'Float along lush green coconut groves in a luxurious private wooden Kettuvallam.',
+    details: 'All-inclusive premium wooden houseboat voyages across the tranquil Kerala backwaters in Alleppey. Features fresh Keralite organic seafood dining, village walks, and authentic Ayurvedic massage therapies.'
+  },
+  {
+    id: 6,
+    title: 'Ladakh High Mountain Passes',
+    image: 'img/ladakh.jpg',
+    category: 'India',
+    price: 999,
+    duration: '9 Days',
+    difficulty: 'Hard',
+    rating: 5,
+    short: 'Conquer Leh cold deserts, high motorable passes, and turquoise high-altitude lakes.',
+    details: 'Fully acclimatized extreme Himalayan road expedition. Drive through Khardung La pass, camp in luxury lakeside tents beside Pangong Tso, and explore ancient hilltop Buddhist monasteries.'
+  },
+  {
+    id: 7,
+    title: 'Goa Scuba & Beach Carnival',
+    image: 'https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=800&q=80',
+    category: 'India',
+    price: 599,
+    duration: '6 Days',
+    difficulty: 'Easy',
+    rating: 5,
+    short: 'Dive into warm Arabian waters and revel in Goa\'s sandy beach carnivals.',
+    details: 'Stay in gorgeous oceanfront boutique villas. Dive in the rich coral reefs of Grande Island under PADI-certified master instructors, and enjoy sunset beach BBQ parties.'
+  },
+
+  // ==================== Adventure & Mount Everest (5 cards) ====================
+  {
+    id: 8,
+    title: 'Everest Base Camp Trek',
+    image: 'img/img1.jfif',
+    category: 'Adventure',
+    price: 1499,
+    duration: '14 Days',
+    difficulty: 'Hard',
+    rating: 5,
+    short: 'Embark on the classic trek through Sherpa villages to the roof of the world.',
+    details: 'Experience the world-renowned Everest Base Camp trek with certified Himalayan guides, fully catered teahouse lodgings, acclimatization checks, and breathtaking scenery.'
+  },
+  {
+    id: 9,
+    title: 'Everest Extreme Expedition',
+    image: 'img/everest_extreme.jpg',
+    category: 'Adventure',
+    price: 2999,
+    duration: '20 Days',
+    difficulty: 'Extreme',
+    rating: 5,
+    short: 'Push your limits on an elite high-altitude climbing expedition on Mount Everest.',
+    details: 'A high-octane technical trek to Camp IV and high passes under the guidance of elite Sherpa mountaineers. Includes specialized extreme weather gear and oxygen checks.'
+  },
+  {
+    id: 10,
+    title: 'Annapurna Sanctuary Trek',
+    image: 'img/annapurna.jpg',
+    category: 'Adventure',
+    price: 1299,
+    duration: '12 Days',
+    difficulty: 'Hard',
+    rating: 5,
+    short: 'Hike into a spectacular mountain amphitheater ringed by giant peaks.',
+    details: 'Trek through rhododendron forests and terraced farmland into the heart of the Annapurna Range, sleeping in cozy mountain lodges with majestic panoramic views.'
+  },
+  {
+    id: 11,
+    title: 'Serengeti Wildlife Safari',
+    image: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=800&q=80',
+    category: 'Adventure',
+    price: 1599,
+    duration: '9 Days',
+    difficulty: 'Moderate',
+    rating: 4,
+    short: 'Witness the magnificent wildlife in the heart of the Serengeti.',
+    details: 'Daily private open-top 4x4 wildlife drives, guided luxury bush camp glamping, and professional trackers to spot the Big Five in their natural habitats.'
+  },
+  {
+    id: 12,
+    title: 'Iceland Aurora Explorer',
+    image: 'https://images.unsplash.com/photo-1483168527879-c66136b56105?auto=format&fit=crop&w=800&q=80',
+    category: 'Adventure',
+    price: 1799,
+    duration: '6 Days',
+    difficulty: 'Hard',
+    rating: 5,
+    short: 'Hunt the majestic Northern Lights and hike volcanic ice glaciers.',
+    details: 'Specialized aurora hunting tours, volcanic ice cave climbs, soothing hot spring visits, and off-road driving tours across frozen black sand beaches.'
+  },
+
+  // ==================== Walking Hikes (5 cards) ====================
+  {
+    id: 13,
+    title: 'Swiss Alps Hiking Tour',
+    image: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80',
+    category: 'Tours',
+    price: 1899,
+    duration: '8 Days',
+    difficulty: 'Moderate',
+    rating: 5,
+    short: 'Traverse the picturesque walking trails of the legendary Swiss Alps.',
+    details: 'Small guided group hikes along pristine mountain paths. Enjoy rustic chalet accommodations, traditional cheese tastings, and transport transfers across epic peaks.'
+  },
+  {
+    id: 14,
+    title: 'Scenic Walking Holidays',
+    image: 'https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80',
+    category: 'Tours',
+    price: 699,
+    duration: '7 Days',
+    difficulty: 'Moderate',
+    rating: 4,
+    short: 'Join guided scenic hikes through historical coastlines and forests.',
+    details: 'Leisurely guided hikes across historic country paths. Includes local luggage transfers, boutique inn lodgings, and fine local dinners.'
+  },
+  {
+    id: 15,
+    title: 'Scottish Highlands Trail',
+    image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80',
+    category: 'Tours',
+    price: 899,
+    duration: '6 Days',
+    difficulty: 'Moderate',
+    rating: 5,
+    short: 'Hike through mystical glens, deep lochs, and historic castles.',
+    details: 'Strap on your boots for a trek across the West Highland Way. Discover misty mountains, emerald valleys, and enjoy cozy evenings in traditional Scottish pubs.'
+  },
+  {
+    id: 16,
+    title: 'Amalfi Coast Walking Path',
+    image: 'img/img6.png',
+    category: 'Tours',
+    price: 1299,
+    duration: '7 Days',
+    difficulty: 'Easy',
+    rating: 5,
+    short: 'Walk the famous Path of the Gods overlooking the Mediterranean.',
+    details: 'Enjoy spectacular cliffside walking trails through lemon groves, olive orchards, and vibrant colored fishing villages along Italy\'s iconic southern coast.'
+  },
+  {
+    id: 17,
+    title: 'New Zealand Milford Track',
+    image: 'img/milford.png',
+    category: 'Tours',
+    price: 1499,
+    duration: '8 Days',
+    difficulty: 'Moderate',
+    rating: 5,
+    short: 'Trek what has been called the finest walk in the world.',
+    details: 'Hike beside suspension bridges, giant glacial valleys, and roaring waterfalls through pristine alpine passes in Fiordland National Park.'
+  },
+
+  // ==================== Beach & Scuba (5 cards) ====================
+  {
+    id: 18,
+    title: 'Santorini Sunset Cruise',
+    image: 'https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=800&q=80',
+    category: 'Beach',
+    price: 999,
+    duration: '4 Days',
+    difficulty: 'Easy',
+    rating: 4,
+    short: 'Sail the azure Aegean waters and enjoy spectacular world-famous sunsets.',
+    details: 'All-inclusive private catamaran sailing charters, beach swimming excursions, fresh Greek seafood grilling, and caldera village explorations.'
+  },
+  {
+    id: 19,
+    title: 'Maldives Overwater Luxury',
+    image: 'https://images.unsplash.com/photo-1439066615861-d1af74d74000?auto=format&fit=crop&w=800&q=80',
+    category: 'Beach',
+    price: 1999,
+    duration: '5 Days',
+    difficulty: 'Easy',
+    rating: 5,
+    short: 'Relax in private glass-floor villas over turquoise warm ocean lagoons.',
+    details: 'Ultimate tropical beach holiday. Includes all-inclusive gourmet meals, sunset dolphin spotting cruises, and private snorkeling right from your deck.'
+  },
+  {
+    id: 20,
+    title: 'Great Barrier Reef Snorkel',
+    image: 'https://images.unsplash.com/photo-1546026423-cc4642628d2b?auto=format&fit=crop&w=800&q=80',
+    category: 'Beach',
+    price: 799,
+    duration: '4 Days',
+    difficulty: 'Moderate',
+    rating: 5,
+    short: 'Dive into the world\'s largest and most famous coral reef system.',
+    details: 'Enjoy full-day marine pontoon excursions, glass-bottom boat trips, scuba diving under expert instruction, and beach island hikes in tropical Queensland.'
+  },
+  {
+    id: 21,
+    title: 'Bora Bora Blue Lagoon Sailing',
+    image: 'https://images.unsplash.com/photo-1506929562872-bb421503ef21?auto=format&fit=crop&w=800&q=80',
+    category: 'Beach',
+    price: 1699,
+    duration: '6 Days',
+    difficulty: 'Easy',
+    rating: 4,
+    short: 'Sail across the jewel-like lagoons of French Polynesia.',
+    details: 'Hop across secluded white-sand islets (motus), snorkel with colorful stingrays, and enjoy authentic Tahitian beachfront feasts under the palms.'
+  },
+  {
+    id: 22,
+    title: 'Bahamas Paradise Cruise',
+    image: 'https://images.unsplash.com/photo-1548574505-5e239809ee19?auto=format&fit=crop&w=800&q=80',
+    category: 'Beach',
+    price: 849,
+    duration: '5 Days',
+    difficulty: 'Easy',
+    rating: 4,
+    short: 'Soak up the sun on tropical beaches and explore colonial ports.',
+    details: 'Embark on a luxury beach island cruise around Nassau and private cays. Enjoy water sports, beach volleyball, coral reef snorkeling, and swimming pools.'
+  },
+
+  // ==================== Cultural Tours (5 cards) ====================
+  {
+    id: 23,
+    title: 'Kyoto Cultural Excursion',
+    image: 'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=800&q=80',
+    category: 'Cultural',
+    price: 1199,
+    duration: '5 Days',
+    difficulty: 'Easy',
+    rating: 5,
+    short: 'Immerse yourself in Japan\'s ancient shrines, serene gardens, and heritage.',
+    details: 'Visit historic wooden temples, stroll through iconic bamboo forests, participate in an authentic tea ceremony, and stay in premium modern Ryokans.'
+  },
+  {
+    id: 24,
+    title: 'Rome & Vatican Historic Wonders',
+    image: 'https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=800&q=80',
+    category: 'Cultural',
+    price: 1099,
+    duration: '6 Days',
+    difficulty: 'Easy',
+    rating: 5,
+    short: 'Walk through thousands of years of art, architecture, and empire.',
+    details: 'Private skip-the-line guided tours of the Colosseum, Roman Forum, Vatican Museums, and Sistine Chapel. Enjoy handmade Italian pasta cooking classes.'
+  },
+  {
+    id: 25,
+    title: 'Machu Picchu Inca Explorer',
+    image: 'https://images.unsplash.com/photo-1508849789987-4e5333c12b78?auto=format&fit=crop&w=800&q=80',
+    category: 'Cultural',
+    price: 1399,
+    duration: '7 Days',
+    difficulty: 'Moderate',
+    rating: 5,
+    short: 'Discover the legendary lost city of the Incas hidden in the clouds.',
+    details: 'Hike the scenic segments of the ancient Inca Trail, explore the sacred valleys of Cusco, and enjoy a guided private trek around the ruins of Machu Picchu.'
+  },
+  {
+    id: 26,
+    title: 'Cairo Pyramids & Nile Cruise',
+    image: 'https://images.unsplash.com/photo-1539650116574-8efeb43e2750?auto=format&fit=crop&w=800&q=80',
+    category: 'Cultural',
+    price: 999,
+    duration: '5 Days',
+    difficulty: 'Easy',
+    rating: 4,
+    short: 'Stand before the Great Sphinx and sail down the legendary Nile.',
+    details: 'Explore the Giza Pyramids, view ancient treasures in the Grand Egyptian Museum, and cruise down the Nile on a traditional wooden felucca boat.'
+  },
+  {
+    id: 27,
+    title: 'Athens Acropolis Archeology',
+    image: 'https://images.unsplash.com/photo-1608155686393-8fdd966d784d?auto=format&fit=crop&w=800&q=80',
+    category: 'Cultural',
+    price: 799,
+    duration: '4 Days',
+    difficulty: 'Easy',
+    rating: 4,
+    short: 'Explore the birthplace of philosophy, drama, and democracy.',
+    details: 'Guided archaeological walks of the ancient Acropolis, Parthenon, and Agora. Enjoy rooftop sunset dinners overlooking the ancient ruins.'
+  }
+];
