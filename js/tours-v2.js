@@ -366,14 +366,8 @@ function setupUpiPayment() {
   const txRef = 'ADV-' + Date.now().toString().slice(-6) + '-' + Math.random().toString(36).substr(2, 4).toUpperCase();
   document.getElementById('upiTxRef').innerText = txRef;
 
-  // Generate dynamic QR Code via Free API
-  const payeeAddress = 'adventuretours@paytm';
-  const payeeName = 'ADVENTURE TOURS AND EVENT';
-  const note = `Booking for ${selectedTour.title} Ref ${txRef}`;
-  const upiUri = `upi://pay?pa=${payeeAddress}&pn=${encodeURIComponent(payeeName)}&am=${total}&cu=INR&tn=${encodeURIComponent(note)}`;
-  const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&margin=10&data=${encodeURIComponent(upiUri)}`;
-
-  document.getElementById('upiQrImg').src = qrUrl;
+  // Use user's real actual payment scanner
+  document.getElementById('upiQrImg').src = 'img/upi-scanner.png';
 
   // Countdown timer
   let timeRemaining = 300; // 5 minutes
