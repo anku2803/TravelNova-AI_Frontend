@@ -12,7 +12,7 @@
         <!-- Stylesheets -->
         <link rel="stylesheet" href="css/style.css" />
         <link rel="stylesheet" href="css/responsive.css" />
-        <link rel="stylesheet" href="css/tours.css" />
+        <link rel="stylesheet" href="css/tours-v2.css" />
         <link
             rel="apple-touch-icon"
             sizes="180x180"
@@ -216,52 +216,135 @@
                         </div>
 
                         <!-- STEP 2: Stripe Mock Credit Card Payment Gateway -->
+                        <!-- STEP 2: Interactive Payment Gateway (Card / UPI) -->
                         <div class="booking-step" id="bookingStep2" style="display: none;">
                             <div class="step-header">
                                 <button type="button" class="back-step-btn" onclick="goToStep1()"><i class="fa fa-chevron-left"></i> Back</button>
                                 <h3>2. Payment Gateway</h3>
                             </div>
-                            <div class="stripe-header-row">
-                                <span class="provider-tag"><i class="fa fa-lock"></i> Secure checkout powered by Stripe</span>
-                                <div class="card-logos">
-                                    <i class="fa fa-cc-visa"></i>
-                                    <i class="fa fa-cc-mastercard"></i>
-                                    <i class="fa fa-cc-amex"></i>
-                                </div>
-                            </div>
-                            
-                            <div class="form-group full-width">
-                                <label for="cardholderName"><i class="fa fa-user"></i> Cardholder Name</label>
-                                <input type="text" id="cardholderName" placeholder="Name on credit card" required />
+
+                            <!-- Payment Method Selector Tabs -->
+                            <div class="payment-method-tabs">
+                                <button type="button" class="pay-tab active" data-method="card" onclick="switchPaymentMethod('card')">
+                                    <i class="fa fa-credit-card"></i> Card Payment
+                                </button>
+                                <button type="button" class="pay-tab" data-method="upi" onclick="switchPaymentMethod('upi')">
+                                    <i class="fa fa-mobile-phone" style="font-size: 1.25rem;"></i> UPI Scanner
+                                </button>
                             </div>
 
-                            <div class="form-group full-width" style="position: relative;">
-                                <label for="cardNumber"><i class="fa fa-credit-card"></i> Card Number</label>
-                                <div class="card-input-wrapper">
-                                    <input type="text" id="cardNumber" placeholder="4111 2222 3333 4444" maxlength="19" required oninput="formatCardNumber(this)" />
-                                    <i class="fa fa-credit-card card-brand-icon" id="cardBrandIcon"></i>
+                            <!-- Method A: Credit Card Payment Form -->
+                            <div class="payment-method-content active" id="methodCard">
+                                <!-- Dynamic 3D Card Preview Container -->
+                                <div class="credit-card-preview-container">
+                                    <div class="credit-card-inner" id="creditCardInner">
+                                        <!-- Front of Card -->
+                                        <div class="card-front">
+                                            <div class="card-chip"></div>
+                                            <div class="card-logo-overlay" id="cardTypeLogo"><i class="fa fa-credit-card"></i></div>
+                                            <div class="card-preview-number" id="previewCardNumber">•••• •••• •••• ••••</div>
+                                            <div class="card-meta">
+                                                <div class="card-holder-section">
+                                                    <span class="card-lbl">Card Holder</span>
+                                                    <div class="card-preview-name" id="previewCardName">YOUR NAME HERE</div>
+                                                </div>
+                                                <div class="card-expiry-section">
+                                                    <span class="card-lbl">Expires</span>
+                                                    <div class="card-preview-expiry" id="previewCardExpiry">MM/YY</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Back of Card -->
+                                        <div class="card-back">
+                                            <div class="card-magnetic-strip"></div>
+                                            <div class="card-signature-bar">
+                                                <div class="card-preview-cvv" id="previewCardCvv">•••</div>
+                                            </div>
+                                            <div class="card-back-text">SECURE TRANSACTIONS POWERED BY STRIPE</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="stripe-header-row">
+                                    <span class="provider-tag"><i class="fa fa-lock"></i> Secure checkout powered by Stripe</span>
+                                    <div class="card-logos">
+                                        <i class="fa fa-cc-visa"></i>
+                                        <i class="fa fa-cc-mastercard"></i>
+                                        <i class="fa fa-cc-amex"></i>
+                                    </div>
+                                </div>
+
+                                <div class="form-group full-width">
+                                    <label for="cardholderName"><i class="fa fa-user"></i> Cardholder Name</label>
+                                    <input type="text" id="cardholderName" placeholder="Name on credit card" oninput="updateCardName(this)" />
+                                </div>
+
+                                <div class="form-group full-width" style="position: relative;">
+                                    <label for="cardNumber"><i class="fa fa-credit-card"></i> Card Number</label>
+                                    <div class="card-input-wrapper">
+                                        <input type="text" id="cardNumber" placeholder="4111 2222 3333 4444" maxlength="19" oninput="formatCardNumber(this)" />
+                                        <i class="fa fa-credit-card card-brand-icon" id="cardBrandIcon"></i>
+                                    </div>
+                                </div>
+
+                                <div class="form-row-grid">
+                                    <div class="form-group">
+                                        <label for="cardExpiry"><i class="fa fa-calendar"></i> Expiration Date</label>
+                                        <input type="text" id="cardExpiry" placeholder="MM/YY" maxlength="5" oninput="formatExpiry(this)" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="cardCvv"><i class="fa fa-lock"></i> CVV Code</label>
+                                        <input type="password" id="cardCvv" placeholder="123" maxlength="4" onfocus="flipCard(true)" onblur="flipCard(false)" oninput="updateCardCvv(this)" />
+                                    </div>
+                                </div>
+
+                                <div class="total-price-bar payment-total-bar">
+                                    <span>Grand Total to Pay:</span>
+                                    <span class="final-total" id="modalPaymentTotal">₹899</span>
+                                </div>
+
+                                <button type="submit" class="modal-submit-btn pay-submit-btn">
+                                    <span>Pay & Confirm Reservation</span>
+                                </button>
+                            </div>
+
+                            <!-- Method B: UPI QR Scanner -->
+                            <div class="payment-method-content" id="methodUpi" style="display: none;">
+                                <div class="upi-scanner-container">
+                                    <span class="upi-timer" id="upiTimer">Time Remaining: 05:00</span>
+                                    
+                                    <div class="qr-code-wrapper">
+                                        <img src="" id="upiQrImg" alt="Scan to pay via UPI" />
+                                        <div class="qr-scanner-glow"></div>
+                                    </div>
+                                    
+                                    <div class="upi-instruction">
+                                        <h4>Scan QR with BHIM, GPay, PhonePe, or Paytm</h4>
+                                        <p>Safe and instant transaction directly to our verified merchant account.</p>
+                                    </div>
+
+                                    <div class="upi-details-card">
+                                        <div class="detail-row">
+                                            <span class="detail-label">Merchant VPA</span>
+                                            <span class="detail-val">adventuretours@paytm</span>
+                                        </div>
+                                        <div class="detail-row">
+                                            <span class="detail-label">Ref Reference</span>
+                                            <span class="detail-val" id="upiTxRef">ADV-20260602-0941</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="total-price-bar payment-total-bar upi-total-bar" style="margin-top: 15px;">
+                                        <span>Grand Total to Pay:</span>
+                                        <span class="final-total" id="modalUpiPaymentTotal">₹899</span>
+                                    </div>
+
+                                    <button type="button" class="modal-submit-btn pay-submit-btn upi-verify-btn" onclick="verifyUpiPayment()">
+                                        <span>Verify Payment & Confirm Spot</span>
+                                    </button>
                                 </div>
                             </div>
 
-                            <div class="form-row-grid">
-                                <div class="form-group">
-                                    <label for="cardExpiry"><i class="fa fa-calendar"></i> Expiration Date</label>
-                                    <input type="text" id="cardExpiry" placeholder="MM/YY" maxlength="5" required oninput="formatExpiry(this)" />
-                                </div>
-                                <div class="form-group">
-                                    <label for="cardCvv"><i class="fa fa-lock"></i> CVV Code</label>
-                                    <input type="password" id="cardCvv" placeholder="123" maxlength="3" required />
-                                </div>
-                            </div>
-
-                            <div class="total-price-bar payment-total-bar">
-                                <span>Grand Total to Pay:</span>
-                                <span class="final-total" id="modalPaymentTotal">₹899</span>
-                            </div>
-
-                            <button type="submit" class="modal-submit-btn pay-submit-btn">
-                                <span>Pay & Confirm Reservation</span>
-                            </button>
                         </div>
 
                         <!-- PROCESSING SCREEN OVERLAY -->
@@ -345,6 +428,6 @@
             });
         </script>
         <script src="js/events-data.js"></script>
-        <script src="js/tours.js"></script>
+        <script src="js/tours-v2.js"></script>
     </body>
 </html>

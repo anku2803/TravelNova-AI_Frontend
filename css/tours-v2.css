@@ -1008,3 +1008,356 @@ body.dark .payment-processing-overlay {
   letter-spacing: 0.5px;
 }
 
+/* ==========================================================================
+   PREMIUM DUAL PAYMENT GATEWAY STYLING
+   ========================================================================== */
+.payment-method-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 25px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 6px;
+  border-radius: 14px;
+}
+
+body.dark .payment-method-tabs {
+  background: rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.pay-tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px;
+  background: transparent;
+  border: none;
+  color: var(--tour-text-muted);
+  font-family: var(--ff-montserrat);
+  font-weight: 700;
+  font-size: 0.95rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.pay-tab:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+body.dark .pay-tab:hover {
+  color: #000;
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.pay-tab.active {
+  background: var(--accent-gradient);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(252, 3, 107, 0.25);
+}
+
+/* 3D Interactive Card Preview Styling */
+.credit-card-preview-container {
+  perspective: 1000px;
+  width: 100%;
+  max-width: 380px;
+  height: 220px;
+  margin: 0 auto 30px auto;
+}
+
+.credit-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: left;
+  transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform-style: preserve-3d;
+}
+
+.credit-card-inner.flipped {
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 16px;
+  padding: 24px;
+  box-sizing: border-box;
+  color: #fff;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.35);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-front {
+  background: linear-gradient(135deg, #1e1e30, #131321);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+body.dark .card-front {
+  background: linear-gradient(135deg, #2a2b36, #1c1d24);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.card-back {
+  background: linear-gradient(135deg, #131321, #0a0a0f);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transform: rotateY(180deg);
+  padding: 24px 0;
+}
+
+body.dark .card-back {
+  background: linear-gradient(135deg, #1c1d24, #0f1014);
+}
+
+.card-chip {
+  width: 45px;
+  height: 35px;
+  background: linear-gradient(135deg, #f2d06b, #b38600);
+  border-radius: 6px;
+  position: relative;
+  box-shadow: inset 0 1px 2px rgba(255,255,255,0.4);
+}
+
+.card-chip::after {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border: 1px solid rgba(0,0,0,0.15);
+  border-radius: 4px;
+}
+
+.card-logo-overlay {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  font-size: 2.2rem;
+  color: rgba(255, 255, 255, 0.85);
+  transition: all 0.3s ease;
+}
+
+.card-preview-number {
+  font-family: monospace;
+  font-size: 1.55rem;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  margin-top: 15px;
+}
+
+.card-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.card-lbl {
+  font-family: var(--ff-montserrat);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 1px;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.card-preview-name {
+  font-family: var(--ff-montserrat);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 220px;
+}
+
+.card-preview-expiry {
+  font-family: monospace;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+/* Card Back specifics */
+.card-magnetic-strip {
+  width: 100%;
+  height: 44px;
+  background: #111;
+  margin-bottom: 20px;
+}
+
+.card-signature-bar {
+  background: #fff;
+  height: 38px;
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 15px;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.card-preview-cvv {
+  color: #111;
+  font-family: monospace;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.card-back-text {
+  text-align: center;
+  font-family: var(--ff-montserrat);
+  font-size: 0.6rem;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 1.5px;
+  padding: 0 20px;
+  margin-top: 15px;
+}
+
+/* UPI Scanner Styling */
+.upi-scanner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 5px 0;
+}
+
+.upi-timer {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  color: #ef4444;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-family: var(--ff-montserrat);
+  font-weight: 700;
+  margin-bottom: 20px;
+  animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.qr-code-wrapper {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  background: #fff;
+  border-radius: 16px;
+  padding: 12px;
+  box-sizing: border-box;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  margin-bottom: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+body.dark .qr-code-wrapper {
+  border: 2px solid rgba(0, 0, 0, 0.08);
+}
+
+.qr-code-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.qr-scanner-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--accent-pink);
+  box-shadow: 0 0 12px var(--accent-pink);
+  border-radius: 2px;
+  animation: scan 3s infinite linear;
+}
+
+@keyframes scan {
+  0% { top: 0%; }
+  50% { top: 100%; }
+  100% { top: 0%; }
+}
+
+.upi-instruction h4 {
+  font-family: var(--ff-montserrat);
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.upi-instruction p {
+  font-family: var(--ff-roboto);
+  font-size: 0.9rem;
+  color: var(--tour-text-muted);
+  line-height: 1.4;
+  max-width: 320px;
+  margin: 0 auto 20px auto;
+}
+
+.upi-details-card {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 16px 20px;
+  border-radius: 12px;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+body.dark .upi-details-card {
+  background: rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.88rem;
+}
+
+.detail-label {
+  font-family: var(--ff-montserrat);
+  color: var(--tour-text-muted);
+  font-weight: 600;
+}
+
+.detail-val {
+  font-family: var(--ff-roboto);
+  font-weight: 700;
+}
+
+.upi-total-bar {
+  margin-bottom: 20px !important;
+}
+
+.upi-verify-btn {
+  background: linear-gradient(135deg, #22c55e, #16a34a) !important;
+  box-shadow: 0 8px 20px rgba(22, 163, 74, 0.3) !important;
+}
+
+.upi-verify-btn:hover {
+  box-shadow: 0 10px 25px rgba(22, 163, 74, 0.45) !important;
+}
+
+
