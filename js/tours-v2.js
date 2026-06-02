@@ -1,5 +1,7 @@
+
 // Premium Interactive Tours Catalog and Booking Coordinator
-const API_BASE = (window.location.protocol === 'file:' || !window.location.origin || window.location.origin === 'null') ? 'http://localhost:5000' : window.location.origin;
+const API_BASE = (window.location.protocol === 'file:' || !window.location.origin || window.location.origin === 'null' || window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') ? 'http://localhost:5000' : 'https://backend-jade-seven-98.vercel.app';
+
 let activeCategory = 'All';
 let searchQuery = '';
 let activeSort = 'default';
