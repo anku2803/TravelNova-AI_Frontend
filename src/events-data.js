@@ -1,4 +1,4 @@
-const EVENTS = [
+export const EVENTS = [
   // ==================== India Specials (7 cards) ====================
   {
     id: 1,

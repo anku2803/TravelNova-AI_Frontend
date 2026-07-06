@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://backend-jade-seven-98.vercel.app/api/:path*"
+    },
+    {
+      "source": "/((?!assets/|img/|favicon.ico|site.webmanifest).*)",
+      "destination": "/index.html"
+    }
+  ]
+}
